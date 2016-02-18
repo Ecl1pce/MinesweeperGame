@@ -1,4 +1,4 @@
- Best logic minesweeper game
+# Best logic minesweeper game
 
 ## Задание
 Реализовать логическую игру "Сапер".
