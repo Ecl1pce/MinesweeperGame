@@ -12,7 +12,7 @@
 NONE
 
 ## Диаграмма прецедентов использования
-!["this is a picture"](report/UseCaseDiagram1.jpg)
+!["this is a picture"](reports/UseCaseDiagram1.jpg)
 
 ## Диаграмма последовательностей
 
