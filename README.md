@@ -15,5 +15,5 @@ NONE
 !["this is a picture"](reports/UseCaseDiagram1.jpg)
 
 ## Диаграмма последовательностей
-
+!["this is a picture"](reports/sequenceDiagram.jpg) 
 ## Диаграмма компонентов
