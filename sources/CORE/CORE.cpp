@@ -1,7 +1,6 @@
-#include "CORE.h"
+#include "core.h"
 
-CORE::CORE()
+
+Core::Core()
 {
-
 }
-

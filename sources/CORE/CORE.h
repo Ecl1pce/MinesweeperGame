@@ -1,15 +1,13 @@
 #ifndef CORE_H
 #define CORE_H
 
+#include "core_global.h"
 
-class CORE
+class CORESHARED_EXPORT Core
 {
+
 public:
-    CORE();
-
-signals:
-
-public slots:
+    Core();
 };
 
 #endif // CORE_H

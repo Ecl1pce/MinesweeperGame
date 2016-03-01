@@ -1,11 +1,22 @@
-TEMPLATE = app
-CONFIG += console c++11
-CONFIG -= app_bundle
-CONFIG -= qt
+#-------------------------------------------------
+#
+# Project created by QtCreator 2016-03-01T19:37:54
+#
+#-------------------------------------------------
 
-SOURCES += main.cpp \
-    CORE.cpp
+QT       -= gui
 
-HEADERS += \
-    CORE.h
+TARGET = Core
+TEMPLATE = lib
 
+DEFINES += CORE_LIBRARY
+
+SOURCES += core.cpp
+
+HEADERS += core.h\
+        core_global.h
+
+unix {
+    target.path = /usr/lib
+    INSTALLS += target
+}
