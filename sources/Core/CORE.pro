@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2016-03-01T19:37:54
+# Project created by QtCreator 2016-03-01T20:04:25
 #
 #-------------------------------------------------
 
@@ -11,9 +11,9 @@ TEMPLATE = lib
 
 DEFINES += CORE_LIBRARY
 
-SOURCES += core.cpp
+SOURCES += gameapi.cpp
 
-HEADERS += core.h\
+HEADERS += gameapi.h\
         core_global.h
 
 unix {
