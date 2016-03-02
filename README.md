@@ -1,4 +1,4 @@
-# MINESᏔ∑∑ᎵER
+# MINESᏔ∑∑ᎵER     ®
 
 !["this is a picture"](reports/middle_1447845412_1584010.jpg)
 ## Задание
