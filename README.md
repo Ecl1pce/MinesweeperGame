@@ -1,5 +1,6 @@
 # Best logic minesweeper game
 
+!["this is a picture"](reports/middle_1447845412_1584010.jpg)
 ## Задание
 Реализовать логическую игру "Сапер".
 
