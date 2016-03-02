@@ -1,4 +1,4 @@
-# Ḿ I ℕ E $ Ꮤ ∑ ∑ ℙ Eℝ 
+# M I N E S Ꮤ ∑ ∑ ק ER
 
 !["this is a picture"](reports/middle_1447845412_1584010.jpg)
 ## Задание
