@@ -8,13 +8,13 @@ class CORESHARED_EXPORT GameAPI
 
 public:
     GameAPI();
-    void GetField();
-    int StartGame(int difficulty);
-    void OpenCell(int x, int y);
-    void SetRedFlag(int x, int y);
-    void SetQuestion(int x, int y);
-    void GetStatus();
-    void SaveGame();
+    void getField();
+    int startGame(int difficulty);
+    void openCell(int x, int y);
+    void setRedFlag(int x, int y);
+    void setQuestion(int x, int y);
+    void setStatus();
+    void saveGame();
 
 };
 
