@@ -16,10 +16,10 @@ Application::paintField(int x, int y, int** field)
 
         for (int j = 0; j < y; j++)
         {
-            if (field[x][y] == 0)
+            if (field[i][j] == 0)
             std::cout << "_ ";
-            if (field[x][y] != 0)
-            std::cout << field[x][y];
+            if (field[i][j] != 0)
+            std::cout << field[i][j];
         }
         std::cout << std::endl;
     }
