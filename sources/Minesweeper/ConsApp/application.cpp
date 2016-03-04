@@ -4,9 +4,9 @@ Application::Application()
 {
 
 }
-Application::getDifficulty()
+Application::enterDifficulty()
 {
-   std::cin  >> difficulty;
+   std::cin  >> Application::difficulty;
    return difficulty;
 }
 Application::paintField(int x, int y, int** field)
@@ -18,9 +18,10 @@ Application::paintField(int x, int y, int** field)
         {
             if (field[i][j] == 0)
             std::cout << "_ ";
-            if (field[i][j] != 0)
+            if (field[i][j] == 1)
             std::cout << field[i][j];
         }
         std::cout << std::endl;
     }
+  return 0;
 }

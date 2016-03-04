@@ -9,7 +9,7 @@ public:
     int viewMainMenu();
     int difficulty;
     void startGame(int difficulty);
-    int getDifficulty();
+    int enterDifficulty();
     int paintField(int x, int y, int** field);
 
 
