@@ -6,12 +6,12 @@ class Application
 {
 public:
     Application();
-    int viewMainMenu();
+   const int viewMainMenu();
+   const void startGame(int difficulty);
+   const int enterDifficulty();
+   const int paintField(int x, int y, int** field);
+private:
     int difficulty;
-    void startGame(int difficulty);
-    int enterDifficulty();
-    int paintField(int x, int y, int** field);
-
 
 
 };
