@@ -4,12 +4,12 @@ Application::Application()
 {
 
 }
-Application::enterDifficulty()
+const Application::enterDifficulty()
 {
    std::cin  >> Application::difficulty;
    return difficulty;
 }
-Application::paintField(int x, int y, int** field)
+const Application::paintField(int x, int y, int** field)
 {
     for (int i = 0; i < x; i++)
     {
@@ -25,7 +25,7 @@ Application::paintField(int x, int y, int** field)
     }
   return 0;
 }
-Application::viewMainMenu()
+const Application::viewMainMenu()
 {
     std::cout << "Good day! It's a MINESWEEPER game." << std::endl;
     std::cout << "Choice your level: (1 - newbie, 2 - gamer, 3 - professional)" << std::endl;

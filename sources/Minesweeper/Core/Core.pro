@@ -11,10 +11,14 @@ TEMPLATE = lib
 
 DEFINES += CORE_LIBRARY
 
-SOURCES += gameapi.cpp
+SOURCES += \
+    cell.cpp \
+    field.cpp
 
-HEADERS += gameapi.h\
-        core_global.h
+HEADERS +=\
+        core_global.h \
+    cell.h \
+    field.h
 
 unix {
     target.path = /usr/lib
