@@ -6,6 +6,7 @@ class Cell
 {
 public:
     Cell();
+    Cell(int coord1, int coord2);
     int getX();
     int getY();
     bool isMine();
@@ -13,8 +14,9 @@ public:
     bool isFlag();
     int getValue();
     void incValue();
-    void openCell();
+    int openCell();
     void swapFlag();
+
 
 protected:
     int x;
