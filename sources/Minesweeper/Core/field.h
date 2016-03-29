@@ -2,6 +2,8 @@
 #define FIELD_H
 
 #include "cell.h"
+#include <stdlib.h>
+#include <time.h>
 class Cell;
 
 class Field
@@ -10,15 +12,16 @@ public:
     Field();
     Field(int difficulty);
     void openAllCells();
-    int checkMinesAround(int coord1, int coord2);
+    void setValuesInCells(int x, int y);
     bool checkValidCoord(int coord1, int coord2);
-    int minesNumber;
-    void spawnMines(fieldSizeX, fieldSizeY, minesNumber);
+    void spawnMines(int fieldSizeX, int fieldSizeY,int minesNumber);
+    int random(int maxValue);
 protected:
    // static const int SIZE = 8;
     int fieldSizeX;
     int fieldSizeY;
     Cell** field;
+    int minesNumber;
 };
 
 #endif // FIELD_H
