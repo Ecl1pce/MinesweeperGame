@@ -1,15 +1,15 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2016-03-01T20:04:25
+# Project created by QtCreator 2016-03-30T17:29:12
 #
 #-------------------------------------------------
 
 QT       -= gui
 
-TARGET = Core
+TARGET = MinesweeperEngine
 TEMPLATE = lib
 
-DEFINES += CORE_LIBRARY
+DEFINES += MINESWEEPERENGINE_LIBRARY
 
 SOURCES += \
     cell.cpp \
