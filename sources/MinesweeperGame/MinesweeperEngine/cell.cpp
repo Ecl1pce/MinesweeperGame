@@ -32,4 +32,5 @@ void Cell::swapFlag() { flag = !flag; }
 
 int Cell::openCell() { open = 1; return value; }
 
+bool Cell::isOpen() { return open; }
 

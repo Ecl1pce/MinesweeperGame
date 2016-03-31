@@ -4,28 +4,28 @@ Application::Application()
 {
 
 }
-const Application::enterDifficulty()
+Application::enterDifficulty()
 {
    std::cin  >> Application::difficulty;
    return difficulty;
 }
-const Application::paintField(int x, int y, int** field)
+int Application::paintField(int x, int y, Cell** field)
 {
     for (int i = 0; i < x; i++)
     {
 
         for (int j = 0; j < y; j++)
         {
-            if (field[i][j] == 0)
+            if (field[i][j].isOpen() == 0)
             std::cout << "_ ";
-            if (field[i][j] == 1)
-            std::cout << field[i][j];
+            if (field[i][j].isOpen() == 1)
+            std::cout << field[i][j].getValue();
         }
         std::cout << std::endl;
     }
   return 0;
 }
-const Application::viewMainMenu()
+Application::viewMainMenu()
 {
     std::cout << "Good day! It's a MINESWEEPER game." << std::endl;
     std::cout << "Choice your level: (1 - newbie, 2 - gamer, 3 - professional)" << std::endl;

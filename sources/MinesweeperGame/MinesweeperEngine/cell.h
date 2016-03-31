@@ -16,6 +16,7 @@ public:
     void incValue();
     int openCell();
     void swapFlag();
+    bool isOpen();
 
 
 protected:

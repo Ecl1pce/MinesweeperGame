@@ -16,6 +16,8 @@ public:
     bool checkValidCoord(int coord1, int coord2);
     void spawnMines(int fieldSizeX, int fieldSizeY,int minesNumber);
     int random(int maxValue);
+    int getSizeX();
+    int getSizeY();
 protected:
    // static const int SIZE = 8;
     int fieldSizeX;

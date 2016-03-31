@@ -98,3 +98,11 @@ void Field::openAllCells()
         for (int j = 0; j < fieldSizeY; j++)
             field[i][j].openCell();
 }
+int Field::getSizeX()
+{
+    return fieldSizeX;
+}
+int Field::getSizeY()
+{
+    return fieldSizeY;
+}

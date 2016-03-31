@@ -1,15 +1,17 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
+#include "../MinesweeperEngine/field.h"
+#include "../MinesweeperEngine/cell.h"
 
 class Application
 {
 public:
     Application();
-    const  int viewMainMenu();
-    const void startGame(int difficulty);
-    const  int enterDifficulty();
-    const int paintField(int x, int y, int** field);
+    int viewMainMenu();
+    void startGame(int difficulty);
+    int enterDifficulty();
+    int paintField(int x, int y, Cell** field);
     int difficulty;
 
 
