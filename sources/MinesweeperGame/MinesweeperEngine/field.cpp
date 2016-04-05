@@ -106,3 +106,11 @@ int Field::getSizeY()
 {
     return fieldSizeY;
 }
+int Field::getMinesNumber()
+{
+    return minesNumber;
+}
+ Cell** Field::getField()
+{
+    return field;
+}

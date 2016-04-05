@@ -1,8 +1,10 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-#include "../MinesweeperEngine/field.h"
-#include "../MinesweeperEngine/cell.h"
+#include "field.h"
+#include "cell.h"
+class Field;
+class Cell;
 
 class Application
 {

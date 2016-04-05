@@ -18,7 +18,7 @@ int Application::paintField(int x, int y, Cell** field)
         {
             if (field[i][j].isOpen() == 0)
             std::cout << "_ ";
-            if (field[i][j].isOpen() == 1)
+            if (field[i][j].open == 1)
             std::cout << field[i][j].getValue();
         }
         std::cout << std::endl;
@@ -32,4 +32,13 @@ Application::viewMainMenu()
     enterDifficulty();
     std::cout << "Process building a field..." << std::endl;
     return 0;
+}
+void Application::startGame(int difficulty)
+{
+    Field field(difficulty);
+    int i = 0;
+    while (i < field.getMinesNumber())
+    {
+        paintField(field.getSizeX(), field.getSizeY(), field.getField());
+    }
 }

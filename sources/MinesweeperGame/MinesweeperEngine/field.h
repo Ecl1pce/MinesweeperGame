@@ -18,11 +18,14 @@ public:
     int random(int maxValue);
     int getSizeX();
     int getSizeY();
+    int getMinesNumber();
+    Cell** getField();
+    Cell** field;
 protected:
    // static const int SIZE = 8;
     int fieldSizeX;
     int fieldSizeY;
-    Cell** field;
+
     int minesNumber;
 };
 

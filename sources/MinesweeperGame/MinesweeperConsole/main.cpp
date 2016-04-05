@@ -8,6 +8,7 @@ int main(int argc, char *argv[])
     QCoreApplication a(argc, argv);
     Application app;
     app.viewMainMenu();
+    app.startGame(app.difficulty);
 
 
 

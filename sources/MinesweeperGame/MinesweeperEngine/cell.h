@@ -17,7 +17,7 @@ public:
     int openCell();
     void swapFlag();
     bool isOpen();
-
+    bool open;
 
 protected:
     int x;
@@ -25,7 +25,7 @@ protected:
     int value;
     bool flag;
     bool mine;
-    bool open;
+
 };
 
 #endif // CELL_H
