@@ -5,3 +5,5 @@ SUBDIRS += \
     MinesweeperEngine \
     MinesweeperDesktop \
     MinesweeperTests
+
+MinesweeperConsole.depends = MinesweeperEngine

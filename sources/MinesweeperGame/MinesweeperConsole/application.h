@@ -2,10 +2,6 @@
 #define APPLICATION_H
 
 #include "field.h"
-#include "cell.h"
-class Field;
-class Cell;
-
 class Application
 {
 public:
@@ -13,10 +9,11 @@ public:
     int viewMainMenu();
     void startGame(int difficulty);
     int enterDifficulty();
-    int paintField(int x, int y, Cell** field);
+    int paintField(Field field);
     int difficulty;
-
-
+    Field appField;
+    int x;
+    int y;
 
 };
 

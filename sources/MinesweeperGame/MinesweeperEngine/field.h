@@ -4,29 +4,31 @@
 #include "cell.h"
 #include <stdlib.h>
 #include <time.h>
+#include <vector>
+#include <iostream>
 class Cell;
-
+using namespace std;
 class Field
 {
 public:
     Field();
-    Field(int difficulty);
+    Field(int sizeX, int sizeY);
     void openAllCells();
     void setValuesInCells(int x, int y);
     bool checkValidCoord(int coord1, int coord2);
-    void spawnMines(int fieldSizeX, int fieldSizeY,int minesNumber);
+    void spawnMines();
     int random(int maxValue);
     int getSizeX();
     int getSizeY();
     int getMinesNumber();
-    Cell** getField();
-    Cell** field;
+    Cell *getConsField();
+    Cell* consField[16][32];
 protected:
-   // static const int SIZE = 8;
     int fieldSizeX;
     int fieldSizeY;
-
     int minesNumber;
+    vector<vector<Cell> > vecField;
+
 };
 
 #endif // FIELD_H

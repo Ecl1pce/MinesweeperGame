@@ -19,3 +19,5 @@ else:unix: LIBS += -L$$OUT_PWD/../MinesweeperEngine/ -lMinesweeperEngine
 
 INCLUDEPATH += $$PWD/../MinesweeperEngine
 DEPENDPATH += $$PWD/../MinesweeperEngine
+
+

@@ -16,7 +16,6 @@ SOURCES += \
     field.cpp
 
 HEADERS +=\
-        core_global.h \
     cell.h \
     field.h
 
