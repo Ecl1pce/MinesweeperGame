@@ -23,11 +23,16 @@ public:
     int getMinesNumber();
     Cell *getConsField();
     Cell* consField[16][32];
+    void openCellsAround(int x, int y);
+    bool lose();
+    bool isGameActive();
+    bool gameActive;
 protected:
     int fieldSizeX;
     int fieldSizeY;
     int minesNumber;
     vector<vector<Cell> > vecField;
+    bool loseFlag;
 
 };
 

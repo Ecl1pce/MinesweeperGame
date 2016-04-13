@@ -14,6 +14,7 @@ public:
     Field appField;
     int x;
     int y;
+    void open(int x, int y);
 
 };
 

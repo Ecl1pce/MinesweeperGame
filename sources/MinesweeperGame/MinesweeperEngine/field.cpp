@@ -5,6 +5,8 @@ Field::Field()
     fieldSizeX = 16;
     fieldSizeY = 32;
     minesNumber = 100;
+    gameActive = 1;
+    loseFlag = 0;
 
     for (int i = 0; i < fieldSizeX; i++)
         for (int j = 0; j < fieldSizeY; j++)
@@ -137,4 +139,52 @@ int Field::getMinesNumber()
 {
     return minesNumber;
 }
+void Field::openCellsAround(int x, int y)
+{
+    consField[x][y]->openCell();
+    if (consField[x][y]->isMine())
+        loseFlag = 1;
+    if (consField[x][y]->getValue() == 0)
+    {
+    if (checkValidCoord(x - 1, y - 1))
+        if (consField[x-1][y-1]->getValue() == 0)
+        openCellsAround(x - 1, y - 1);
 
+    if (checkValidCoord(x - 1, y))
+        if (consField[x-1][y]->getValue() == 0)
+        openCellsAround(x - 1, y);
+
+    if (checkValidCoord(x - 1, y + 1))
+        if (consField[x-1][y+1]->getValue() == 0)
+        openCellsAround(x - 1, y + 1);
+
+    if (checkValidCoord(x, y - 1))
+        if (consField[x][y-1]->getValue() == 0)
+        openCellsAround(x, y - 1);
+
+    if (checkValidCoord(x, y + 1))
+        if (consField[x][y+1]->getValue() == 0)
+        openCellsAround(x, y + 1);
+
+    if (checkValidCoord(x + 1, y - 1))
+        if (consField[x+1][y-1]->getValue() == 0)
+        openCellsAround(x + 1, y - 1);
+
+    if (checkValidCoord(x + 1, y))
+        if (consField[x+1][y]->getValue() == 0)
+        openCellsAround(x + 1, y);
+
+    if (checkValidCoord(x + 1, y + 1))
+        if (consField[x+1][y+1]->getValue() == 0)
+        openCellsAround(x + 1, y + 1);
+    }
+
+}
+bool Field::lose()
+{
+    return loseFlag;
+}
+bool Field::isGameActive()
+{
+    return gameActive;
+}
