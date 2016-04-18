@@ -8,15 +8,19 @@
 #include <iostream>
 class Cell;
 using namespace std;
+
+/**
+ * @brief The Field class Класс целого игрового поля
+ */
 class Field
 {
 public:
     Field();
-    Field(int sizeX, int sizeY);
+    //Field(int sizeX, int sizeY);
     void openAllCells();
     void setValuesInCells(int x, int y);
     bool checkValidCoord(int coord1, int coord2);
-    void spawnMines();
+    int spawnMines();
     int random(int maxValue);
     int getSizeX();
     int getSizeY();

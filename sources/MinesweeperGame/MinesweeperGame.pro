@@ -1,4 +1,5 @@
 TEMPLATE = subdirs
+QMAKE_CXXFLAGS += -std=c++11
 
 SUBDIRS += \
     MinesweeperConsole \
@@ -7,3 +8,4 @@ SUBDIRS += \
     MinesweeperTests
 
 MinesweeperConsole.depends = MinesweeperEngine
+

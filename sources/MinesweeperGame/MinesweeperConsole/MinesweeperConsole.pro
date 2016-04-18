@@ -1,5 +1,6 @@
 QT += core
 QT -= gui
+QMAKE_CXXFLAGS += -std=c++11
 
 TARGET = MinesweeperConsole
 CONFIG += console

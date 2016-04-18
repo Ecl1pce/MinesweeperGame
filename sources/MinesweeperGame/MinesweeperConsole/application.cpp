@@ -2,7 +2,7 @@
 #include <iostream>
 Application::Application()
 {
-
+isWin = 0;
 }
 Application::enterDifficulty()
 {
@@ -26,18 +26,24 @@ int Application::paintField(Field field)
         else cout << i << "  ";
         for (int j = 0; j < field.getSizeY(); j++)
         {
-            if (field.consField[i][j]->isOpen() == 1)
+            if (field.consField[i][j]->isFlag())
+                std::cout << "F" << " ";
+            else if (field.consField[i][j]->isOpen())
             {
-                if (field.consField[i][j]->isMine() == 1)
+                if (field.consField[i][j]->isMine())
                     std::cout << "M" << " ";
                 else
-                std::cout << field.consField[i][j]->getValue() << " ";
+                    std::cout << field.consField[i][j]->getValue() << " ";
             }
             else
                 std::cout << "_ ";
         }
         std::cout << std::endl;
     }
+    std::cout << "Mines left: " << minesLeft << endl;
+    std::cout << "Flags left: " << flagsLeft << endl;
+
+
     return 0;
 }
 Application::viewMainMenu()
@@ -50,37 +56,22 @@ Application::viewMainMenu()
     system("pause");
     std::cout << endl;
     std::cout << endl;
-
-    //std::cout << "Process building a field..." << std::endl;
-
     return 0;
 }
-void Application::startGame(int difficulty)
+void Application::startGame()
 {
-    string command;
-
+    facticalMinesNumber = calculateMinesLeft(appField);
+    calculateFlagsLeft();
     while (appField.isGameActive())
     {
-        paintField(appField);
-        cout << "Enter command" << endl;
-        cin >> command;
-        if (command == "exit")
+        if (isWin)
         {
-            cout << "Game over" << endl;
-            system("pause");
+            std::cout << "GRATULATIONS!!! YOU WIN" << std::endl;
             break;
-            system("exit");
         }
-        if (command == "open")
-        {
-            cout << "Enter coordinates of cell, which must be opened" << endl;
-            cin >> y >> x;
-            open(x, y);
-        }
-        if (command == "openall")
-        {
-            appField.openAllCells();
-        }
+        calculateMinesLeft(appField);
+        paintField(appField);
+        enterCommands();
     }
 
 }
@@ -91,6 +82,107 @@ void Application::open(int x, int y)
     {
         cout << "You lose" << endl;
         appField.openAllCells();
+        paintField(appField);
         appField.gameActive = 0;
     }
+}
+int Application::calculateMinesLeft(Field field)
+{
+    minesLeft = 0;
+    for (int i = 0; i < field.getSizeX(); i++)
+        for (int j = 0; j < field.getSizeY(); j++)
+            if (field.consField[i][j]->isMine() && field.consField[i][j]->isFlag() == 0)
+                minesLeft++;
+    return minesLeft;
+
+}
+int Application::calculateFlagsLeft()
+{
+    flagsLeft = facticalMinesNumber;
+//    for (int i = 0; i < field.getSizeX(); i++)
+//        for (int j = 0; j < field.getSizeY(); j++)
+//            if (field.consField[i][j]->isFlag())
+//                flagsLeft--;
+    return flagsLeft;
+
+}
+void Application::setFlag(int x, int y)
+{
+    if (flagsLeft > 0)
+    {
+    appField.consField[x][y]->swapFlag();
+    if (appField.consField[x][y]->isFlag())
+        flagsLeft--;
+    else flagsLeft++;
+    }
+    else noManyFlags();
+}
+void Application::help()
+{
+    std::cout << "   Command list: " << std::endl;
+    std::cout << "open - for open cell with coordinates X and Y. Press /enter/ between entering first and second coordinates" << std::endl;
+    std::cout << "flag - for set flag in cell with coordinates X and Y. Press /enter/ between entering first and second coordinates" << std::endl;
+    std::cout << "exit - for close app" << std::endl;
+    system("pause");
+//    std::cout << "" << std::endl;
+//    std::cout <<  << std::endl;
+//    std::cout <<  << std::endl;
+
+}
+void Application::noManyFlags()
+{
+    std::cout << "You haven't flags more" << std::endl;
+}
+void Application::enterCommands()
+{
+    cout << "Enter command" << endl;
+    cin >> command;
+    SWITCH (command)
+    {
+    CASE ("exit"):
+        cout << "Game over" << endl;
+        exit(0);
+        break;
+    CASE ("open"):
+        cout << "Enter coordinates of cell, which must be opened" << endl;
+        cin >> y >> x;
+        open(x, y);
+        break;
+    CASE ("openall"):
+        appField.openAllCells();
+        break;
+    CASE ("flag"):
+        cout << "Enter coordinates of cell, where you want set flag" << endl;
+        cin >> y >> x;
+        setFlag(x, y);
+        break;
+    CASE ("help"):
+         help();
+        break;
+    DEFAULT:
+        help();
+    }
+//    if (command == "exit")
+//    {
+//        cout << "Game over" << endl;
+//        exit(0);
+//    }
+//    if (command == "open")
+//    {
+//        cout << "Enter coordinates of cell, which must be opened" << endl;
+//        cin >> y >> x;
+//        open(x, y);
+//    }
+//    if (command == "openall")
+//    {
+//        appField.openAllCells();
+//    }
+//    if (command == "flag")
+//    {
+//        cout << "Enter coordinates of cell, where you want set flag" << endl;
+//        cin >> y >> x;
+//        setFlag(x, y);
+//    }
+//    if (command == "help")
+//        help();
 }

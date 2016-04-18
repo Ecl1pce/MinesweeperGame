@@ -1,8 +1,5 @@
 #include "cell.h"
 
-Cell::Cell()
-{
-}
 
 Cell::Cell(int coord1, int coord2)
 {
@@ -30,7 +27,7 @@ void Cell::setMine() { mine = 1; }
 
 void Cell::swapFlag() { flag = !flag; }
 
-int Cell::openCell() { open = 1; return value; }
+void Cell::openCell() { open = 1; }
 
 bool Cell::isOpen() { return open; }
 

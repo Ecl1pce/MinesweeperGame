@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       -= gui
-
+QMAKE_CXXFLAGS += -std=c++11
 TARGET = MinesweeperEngine
 TEMPLATE = lib
 
@@ -17,7 +17,8 @@ SOURCES += \
 
 HEADERS +=\
     cell.h \
-    field.h
+    field.h \
+    str_switch.h
 
 unix {
     target.path = /usr/lib

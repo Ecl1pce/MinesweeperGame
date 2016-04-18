@@ -2,18 +2,15 @@
 #include "application.h"
 #include <iostream>
 
-int main(int argc, char *argv[])
+int main()
 {
     setlocale(LC_ALL, "rus");
-    QCoreApplication a(argc, argv);
+    while (true)
+    {
     Application app;
-   app.viewMainMenu();
-    app.startGame(app.difficulty);
-    Field field;
-
-
-
-
-    return a.exec();
+    app.viewMainMenu();
+    app.startGame();
+    }
+    return 0;
 }
 

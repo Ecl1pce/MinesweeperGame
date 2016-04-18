@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += testlib
+QMAKE_CXXFLAGS += -std=c++11
 
 QT       -= gui
 
@@ -17,6 +18,7 @@ TEMPLATE = app
 
 SOURCES += tst_minesweeperteststest.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
+
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../MinesweeperEngine/release/ -lMinesweeperEngine
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../MinesweeperEngine/debug/ -lMinesweeperEngine
