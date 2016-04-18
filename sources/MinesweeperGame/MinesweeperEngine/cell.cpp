@@ -1,10 +1,14 @@
 #include "cell.h"
 
-
-Cell::Cell(int coord1, int coord2)
+Cell::Cell()
 {
-    x = coord1;
-    y = coord2;
+
+}
+
+Cell::Cell(int coordX, int coordY)
+{
+    x = coordX;
+    y = coordY;
     mine = 0;
     open = 0;
     flag = 0;

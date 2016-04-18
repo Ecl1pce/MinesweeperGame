@@ -26,14 +26,14 @@ int Application::paintField(Field field)
         else cout << i << "  ";
         for (int j = 0; j < field.getSizeY(); j++)
         {
-            if (field.consField[i][j]->isFlag())
+            if (field.getPieceOfField(i, j).isFlag())
                 std::cout << "F" << " ";
-            else if (field.consField[i][j]->isOpen())
+            else if (field.getPieceOfField(i, j).isOpen())
             {
-                if (field.consField[i][j]->isMine())
+                if (field.getPieceOfField(i, j).isMine())
                     std::cout << "M" << " ";
                 else
-                    std::cout << field.consField[i][j]->getValue() << " ";
+                    std::cout << field.getPieceOfField(i, j).getValue() << " ";
             }
             else
                 std::cout << "_ ";
@@ -42,16 +42,18 @@ int Application::paintField(Field field)
     }
     std::cout << "Mines left: " << minesLeft << endl;
     std::cout << "Flags left: " << flagsLeft << endl;
+    //std::cout << endl;
 
 
     return 0;
 }
 Application::viewMainMenu()
 {
-    std::cout << "Good day! It's a MINESWEEPER game." << std::endl;
+    std::cout << "Good day! It's a MINESWEEPER game." << std::endl << std::endl;
     std::cout << "Choice your level: (1 - newbie, 2 - gamer, 3 - professional)" << std::endl;
     enterDifficulty();
-    std::cout << "HaHa! Level of difficulty, which you have entered, has no effect! The program itself will decide on which field you play!!" << std::endl;
+    std::cout << "HaHa! Level of difficulty, which you have entered, has no effect!" << std::endl;
+    std::cout << "The program itself will decide on which field you play!!" << std::endl;
     std::cout << "Lets play a game))00))" << std::endl;
     system("pause");
     std::cout << endl;
@@ -60,38 +62,36 @@ Application::viewMainMenu()
 }
 void Application::startGame()
 {
-    facticalMinesNumber = calculateMinesLeft(appField);
+    sizeX = 16;
+    sizeY = 32;
+    mines = 70;
+    appField = new Field(sizeX, sizeY, mines);
+    facticalMinesNumber = calculateMinesLeft();
     calculateFlagsLeft();
-    while (appField.isGameActive())
+    while (appField->isGameActive())
     {
         if (isWin)
         {
             std::cout << "GRATULATIONS!!! YOU WIN" << std::endl;
             break;
         }
-        calculateMinesLeft(appField);
-        paintField(appField);
+        calculateMinesLeft();
+        paintField(*appField);
         enterCommands();
     }
 
 }
 void Application::open(int x, int y)
 {
-    appField.openCellsAround(x,y);
-    if (appField.lose())
-    {
-        cout << "You lose" << endl;
-        appField.openAllCells();
-        paintField(appField);
-        appField.gameActive = 0;
-    }
+    appField->openCellsAround(x,y);
+    checkLose();
 }
-int Application::calculateMinesLeft(Field field)
+int Application::calculateMinesLeft()
 {
     minesLeft = 0;
-    for (int i = 0; i < field.getSizeX(); i++)
-        for (int j = 0; j < field.getSizeY(); j++)
-            if (field.consField[i][j]->isMine() && field.consField[i][j]->isFlag() == 0)
+    for (int i = 0; i < appField->getSizeX(); i++)
+        for (int j = 0; j < appField->getSizeY(); j++)
+            if (appField->getPieceOfField(i, j).isMine() && appField->getPieceOfField(i, j).isFlag() == 0)
                 minesLeft++;
     return minesLeft;
 
@@ -99,10 +99,6 @@ int Application::calculateMinesLeft(Field field)
 int Application::calculateFlagsLeft()
 {
     flagsLeft = facticalMinesNumber;
-//    for (int i = 0; i < field.getSizeX(); i++)
-//        for (int j = 0; j < field.getSizeY(); j++)
-//            if (field.consField[i][j]->isFlag())
-//                flagsLeft--;
     return flagsLeft;
 
 }
@@ -110,8 +106,8 @@ void Application::setFlag(int x, int y)
 {
     if (flagsLeft > 0)
     {
-    appField.consField[x][y]->swapFlag();
-    if (appField.consField[x][y]->isFlag())
+    appField->setFlag(x, y);
+    if (appField->getPieceOfField(x, y).isFlag())
         flagsLeft--;
     else flagsLeft++;
     }
@@ -120,9 +116,9 @@ void Application::setFlag(int x, int y)
 void Application::help()
 {
     std::cout << "   Command list: " << std::endl;
-    std::cout << "open - for open cell with coordinates X and Y. Press /enter/ between entering first and second coordinates" << std::endl;
-    std::cout << "flag - for set flag in cell with coordinates X and Y. Press /enter/ between entering first and second coordinates" << std::endl;
-    std::cout << "exit - for close app" << std::endl;
+    std::cout << "1. open - for open cell with coordinates X and Y. Press /enter/ between entering first and second coordinates" << std::endl;
+    std::cout << "2. flag - for set flag in cell with coordinates X and Y. Press /enter/ between entering first and second coordinates" << std::endl;
+    std::cout << "3. exit - for close app" << std::endl;
     system("pause");
 //    std::cout << "" << std::endl;
 //    std::cout <<  << std::endl;
@@ -149,7 +145,7 @@ void Application::enterCommands()
         open(x, y);
         break;
     CASE ("openall"):
-        appField.openAllCells();
+        appField->openAllCells();
         break;
     CASE ("flag"):
         cout << "Enter coordinates of cell, where you want set flag" << endl;
@@ -162,27 +158,21 @@ void Application::enterCommands()
     DEFAULT:
         help();
     }
-//    if (command == "exit")
-//    {
-//        cout << "Game over" << endl;
-//        exit(0);
-//    }
-//    if (command == "open")
-//    {
-//        cout << "Enter coordinates of cell, which must be opened" << endl;
-//        cin >> y >> x;
-//        open(x, y);
-//    }
-//    if (command == "openall")
-//    {
-//        appField.openAllCells();
-//    }
-//    if (command == "flag")
-//    {
-//        cout << "Enter coordinates of cell, where you want set flag" << endl;
-//        cin >> y >> x;
-//        setFlag(x, y);
-//    }
-//    if (command == "help")
-//        help();
+}
+void Application::checkLose()
+{
+    std::string command;
+    if (appField->lose())
+    {
+        appField->openAllCells();
+        paintField(*appField);
+        cout << endl;
+        cout << "!!!You lose!!!" << endl;
+        appField->gameActive = 0;
+        std::cout << "Would you like try again? Y/N" << std::endl;
+        cin >> command;
+        if (command == "n")
+            exit(0);
+
+    }
 }
