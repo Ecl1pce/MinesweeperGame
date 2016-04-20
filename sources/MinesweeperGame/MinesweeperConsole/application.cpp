@@ -64,7 +64,7 @@ void Application::startGame()
 {
     sizeX = 16;
     sizeY = 32;
-    mines = 70;
+    mines = 50;
     appField = new Field(sizeX, sizeY, mines);
     facticalMinesNumber = calculateMinesLeft();
     calculateFlagsLeft();
@@ -85,6 +85,7 @@ void Application::open(int x, int y)
 {
     appField->openCellsAround(x,y);
     checkLose();
+    checkWin();
 }
 int Application::calculateMinesLeft()
 {
@@ -162,7 +163,7 @@ void Application::enterCommands()
 void Application::checkLose()
 {
     std::string command;
-    if (appField->lose())
+    if (appField->isLose())
     {
         appField->openAllCells();
         paintField(*appField);
@@ -175,4 +176,9 @@ void Application::checkLose()
             exit(0);
 
     }
+}
+void Application::checkWin()
+{
+    if (minesLeft < 1)
+        isWin = 1;
 }

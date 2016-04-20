@@ -15,7 +15,7 @@ private Q_SLOTS:
     void testForMinesSpawn();
     void testForValidCoordCheck();
     void testForSizeCheck();
-    //void testForSettingValuesInCells();
+    void testForSettingValuesInCells();
 
 };
 
@@ -76,37 +76,37 @@ void MinesweeperTestsTest::testForSizeCheck()
     QCOMPARE(field.getSizeY(), 32);
 }
 
-//void MinesweeperTestsTest::testForSettingValuesInCells()
-//{
-//    int facticalValue[field.getSizeX()][field.getSizeY()];
-//    for (int x = 0; x < 16; x++)
-//        for (int y = 0; y < 32; y++)
-//            facticalValue[x][y] = 0;
+void MinesweeperTestsTest::testForSettingValuesInCells()
+{
+    int facticalValue[16][32];
+    for (int x = 0; x < 16; x++)
+        for (int y = 0; y < 32; y++)
+            facticalValue[x][y] = 0;
 
-//    for (int x = 0; x < field.getSizeX(); x++)
-//        for (int y = 0; y < field.getSizeY(); y++)
-//        {
-//            if (field.checkValidCoord(x - 1, y - 1) && field.getPieceOfField(x - 1, y - 1).isMine())
-//                facticalValue[x][y]++;
-//            if (field.checkValidCoord(x - 1, y) && field.getPieceOfField(x - 1, y).isMine())
-//                facticalValue[x][y]++;
-//            if (field.checkValidCoord(x - 1, y + 1) && field.getPieceOfField(x - 1, y + 1).isMine())
-//                facticalValue[x][y]++;
-//            if (field.checkValidCoord(x, y - 1) && field.getPieceOfField(x, y - 1).isMine())
-//                facticalValue[x][y]++;
-//            if (field.checkValidCoord(x, y + 1) && field.getPieceOfField(x - 1, y + 1).isMine())
-//                facticalValue[x][y]++;
-//            if (field.checkValidCoord(x + 1, y - 1) && field.getPieceOfField(x + 1, y - 1).isMine())
-//                facticalValue[x][y]++;
-//            if (field.checkValidCoord(x + 1, y) && field.getPieceOfField(x + 1, y).isMine())
-//                facticalValue[x][y]++;
-//            if (field.checkValidCoord(x + 1, y + 1) && field.getPieceOfField(x + 1, y + 1).isMine())
-//                facticalValue[x][y]++;
-//        }
-//    for (int x = 0; x < field.getSizeX(); x++)
-//        for (int y = 0; y < field.getSizeY(); y++)
-//            QCOMPARE(field.getPieceOfField(x, y).getValue(), facticalValue[x][y]);
-//}
+    for (int x = 0; x < field.getSizeX(); x++)
+        for (int y = 0; y < field.getSizeY(); y++)
+        {
+            if (field.checkValidCoord(x - 1, y - 1) && field.getPieceOfField(x - 1, y - 1).isMine())
+                facticalValue[x][y]++;
+            if (field.checkValidCoord(x - 1, y) && field.getPieceOfField(x - 1, y).isMine())
+                facticalValue[x][y]++;
+            if (field.checkValidCoord(x - 1, y + 1) && field.getPieceOfField(x - 1, y + 1).isMine())
+                facticalValue[x][y]++;
+            if (field.checkValidCoord(x, y - 1) && field.getPieceOfField(x, y - 1).isMine())
+                facticalValue[x][y]++;
+            if (field.checkValidCoord(x, y + 1) && field.getPieceOfField(x - 1, y + 1).isMine())
+                facticalValue[x][y]++;
+            if (field.checkValidCoord(x + 1, y - 1) && field.getPieceOfField(x + 1, y - 1).isMine())
+                facticalValue[x][y]++;
+            if (field.checkValidCoord(x + 1, y) && field.getPieceOfField(x + 1, y).isMine())
+                facticalValue[x][y]++;
+            if (field.checkValidCoord(x + 1, y + 1) && field.getPieceOfField(x + 1, y + 1).isMine())
+                facticalValue[x][y]++;
+        }
+    for (int x = 0; x < field.getSizeX(); x++)
+        for (int y = 0; y < field.getSizeY(); y++)
+            QCOMPARE(field.getPieceOfField(x, y).getValue(), facticalValue[x][y]);
+}
 
 QTEST_APPLESS_MAIN(MinesweeperTestsTest)
 

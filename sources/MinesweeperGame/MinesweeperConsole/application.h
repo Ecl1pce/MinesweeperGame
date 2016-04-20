@@ -32,6 +32,7 @@ public:
     int sizeX;
     int sizeY;
     int mines;
+    void checkWin();
 };
 
 #endif // APPLICATION_H
