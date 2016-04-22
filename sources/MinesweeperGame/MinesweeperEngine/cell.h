@@ -11,12 +11,12 @@ class Cell
 {
 public:
     Cell();
+
     /**
      * @brief Cell Конструктор класса
      * @param coordX Первая координата клетки поля
      * @param coordY Соответственно вторая координата
      */
-
     Cell(int coordX, int coordY);
 
     int getX(); ///< Функция, возвращающая Х-овую координату данной клетки

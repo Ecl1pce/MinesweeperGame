@@ -4,7 +4,7 @@ Application::Application()
 {
 isWin = 0;
 }
-Application::enterDifficulty()
+int Application::enterDifficulty()
 {
     std::cin  >> Application::difficulty;
     return difficulty;
@@ -47,14 +47,14 @@ int Application::paintField(Field field)
 
     return 0;
 }
-Application::viewMainMenu()
+int Application::viewMainMenu()
 {
     std::cout << "Good day! It's a MINESWEEPER game." << std::endl << std::endl;
-    std::cout << "Choice your level: (1 - newbie, 2 - gamer, 3 - professional)" << std::endl;
-    enterDifficulty();
-    std::cout << "HaHa! Level of difficulty, which you have entered, has no effect!" << std::endl;
+//    std::cout << "Choice your level: (1 - newbie, 2 - gamer, 3 - professional)" << std::endl;
+//    enterDifficulty();
+//    std::cout << "HaHa! Level of difficulty, which you have entered, has no effect!" << std::endl;
     std::cout << "The program itself will decide on which field you play!!" << std::endl;
-    std::cout << "Lets play a game))00))" << std::endl;
+    std::cout << "Lets play a game))00))" << std::endl << std::endl;
     system("pause");
     std::cout << endl;
     std::cout << endl;
@@ -64,28 +64,26 @@ void Application::startGame()
 {
     sizeX = 16;
     sizeY = 32;
-    mines = 50;
+    mines = 1;
+    isWin = 0;
     appField = new Field(sizeX, sizeY, mines);
     facticalMinesNumber = calculateMinesLeft();
-    calculateFlagsLeft();
+    flagsLeft = facticalMinesNumber;
     while (appField->isGameActive())
     {
-        if (isWin)
-        {
-            std::cout << "GRATULATIONS!!! YOU WIN" << std::endl;
-            break;
-        }
-        calculateMinesLeft();
         paintField(*appField);
         enterCommands();
     }
-
+    std::cout << "Would you like try again? Y/N" << std::endl;
+    cin >> command;
+    if (command != "y" && command != "Y")
+        exit(0);
 }
 void Application::open(int x, int y)
 {
     appField->openCellsAround(x,y);
     checkLose();
-    checkWin();
+    calculateMinesLeft();
 }
 int Application::calculateMinesLeft()
 {
@@ -113,6 +111,8 @@ void Application::setFlag(int x, int y)
     else flagsLeft++;
     }
     else noManyFlags();
+    calculateMinesLeft();
+    checkWin();
 }
 void Application::help()
 {
@@ -170,10 +170,6 @@ void Application::checkLose()
         cout << endl;
         cout << "!!!You lose!!!" << endl;
         appField->gameActive = 0;
-        std::cout << "Would you like try again? Y/N" << std::endl;
-        cin >> command;
-        if (command == "n")
-            exit(0);
 
     }
 }
@@ -181,4 +177,9 @@ void Application::checkWin()
 {
     if (minesLeft < 1)
         isWin = 1;
+    if (isWin)
+    {
+        std::cout << "GRATULATIONS!!! YOU WIN" << std::endl;
+        appField->gameActive = 0;
+    }
 }

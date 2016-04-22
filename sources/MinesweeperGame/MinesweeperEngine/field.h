@@ -6,7 +6,8 @@
 #include <time.h>
 #include <vector>
 #include <iostream>
-class Cell;
+#include "str_switch.h"
+
 using namespace std;
 
 /**
