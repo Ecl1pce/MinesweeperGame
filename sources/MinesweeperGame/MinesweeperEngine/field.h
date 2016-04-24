@@ -36,7 +36,7 @@ public:
      * @param coord2 Вторая координата
      * @return 1 - если координаты валидные, 0 - если нет
      */
-    bool checkValidCoord(int coord1, int coord2);
+    bool checkValidCoord(int coord1, int coord2) const;
 
     /**
      * @brief random Генерирует случайное число до максимального
@@ -49,19 +49,19 @@ public:
      * @brief getSizeX Возврачает размер Х поля
      * @return Длину поля
      */
-    int getSizeX();
+    int getSizeX() const;
 
     /**
      * @brief getSizeY Возвращает размер Y поля
      * @return Ширину поля
      */
-    int getSizeY();
+    int getSizeY() const;
 
     /**
      * @brief getMinesNumber Возвращает количество мин на поле
      * @return Количество мин всего на поле
      */
-    int getMinesNumber();
+    int getMinesNumber() const;
 
     /**
      * @brief getPieceOfField Интерфейс для доступа к конкретной ячейе поля по заданным координатам
@@ -69,7 +69,7 @@ public:
      * @param y Вторая координата
      * @return Объект Cell - конкретную ячейку поля
      */
-    Cell getPieceOfField(int x, int y);
+    Cell getPieceOfField(int x, int y) const;
 
     /**
      * @brief openCellsAround Открывает ячейку и все пустые ячейки в радиусе 1 клетка

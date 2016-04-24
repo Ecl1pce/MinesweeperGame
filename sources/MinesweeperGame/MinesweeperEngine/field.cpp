@@ -49,7 +49,7 @@ Field::Field(int sizeX, int sizeY, int minesNumber)
                     setValuesInCells(i, j);
 }
 
-bool Field::checkValidCoord(int coord1, int coord2)
+bool Field::checkValidCoord(int coord1, int coord2) const
 {
     return (coord1 >= 0) && (coord2 >= 0) && (coord1 <  fieldSizeX) && (coord2 <  fieldSizeY);
 }
@@ -101,15 +101,15 @@ void Field::openAllCells()
         for (int j = 0; j < fieldSizeY; j++)
             consField[i][j].openCell();
 }
-int Field::getSizeX()
+int Field::getSizeX() const
 {
     return fieldSizeX;
 }
-int Field::getSizeY()
+int Field::getSizeY() const
 {
     return fieldSizeY;
 }
-int Field::getMinesNumber()
+int Field::getMinesNumber() const
 {
     return minesNumber;
 }
@@ -189,7 +189,7 @@ bool Field::isGameActive()
 {
     return gameActive;
 }
-Cell Field::getPieceOfField(int x, int y)
+Cell Field::getPieceOfField(int x, int y) const
 {
     return consField[x][y];
 }

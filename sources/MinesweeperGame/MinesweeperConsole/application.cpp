@@ -47,7 +47,7 @@ int Application::paintField(Field field)
 
     return 0;
 }
-int Application::viewMainMenu()
+int Application::viewMainMenu() const
 {
     std::cout << "Good day! It's a MINESWEEPER game." << std::endl << std::endl;
 //    std::cout << "Choice your level: (1 - newbie, 2 - gamer, 3 - professional)" << std::endl;
@@ -64,7 +64,7 @@ void Application::startGame()
 {
     sizeX = 16;
     sizeY = 32;
-    mines = 1;
+    mines = 50;
     isWin = 0;
     appField = new Field(sizeX, sizeY, mines);
     facticalMinesNumber = calculateMinesLeft();

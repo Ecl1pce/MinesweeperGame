@@ -15,15 +15,15 @@ Cell::Cell(int coordX, int coordY)
     value = 0;
 }
 
-int Cell::getX() { return x; }
+int Cell::getX() const { return x; }
 
-int Cell::getY() { return y; }
+int Cell::getY() const { return y; }
 
-bool Cell::isMine() { return mine; }
+bool Cell::isMine() const { return mine; }
 
-bool Cell::isFlag() { return flag; }
+bool Cell::isFlag() const { return flag; }
 
-int Cell::getValue() { return value; }
+int Cell::getValue() const { return value; }
 
 void Cell::incValue() { value++; }
 
