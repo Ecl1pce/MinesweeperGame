@@ -13,12 +13,17 @@ TEMPLATE = app
 QMAKE_CXXFLAGS += -std=c++11
 
 
-SOURCES += main.cpp\
-        mainwindow.cpp
+SOURCES += main.cpp \
+    mainwindow.cpp \
+    optionswindow.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += \
+    mainwindow.h \
+    optionswindow.h
 
-FORMS    += mainwindow.ui
+FORMS    += \
+    mainwindow.ui \
+    optionswindow.ui
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../MinesweeperEngine/release/ -lMinesweeperEngine
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../MinesweeperEngine/debug/ -lMinesweeperEngine
@@ -26,3 +31,6 @@ else:unix: LIBS += -L$$OUT_PWD/../MinesweeperEngine/ -lMinesweeperEngine
 
 INCLUDEPATH += $$PWD/../MinesweeperEngine
 DEPENDPATH += $$PWD/../MinesweeperEngine
+
+RESOURCES += \
+    resource.qrc
