@@ -19,9 +19,33 @@ signals:
 
 public slots:
     void backToMenu();
+    void saveChanges();
 
 private:
     Ui::OptionsWindow *ui;
+
+    const QSize SCREEN_SIZE{850, 600};
+
+    QString QPushButtonStyle =
+                "QPushButton "
+                "{"
+                    " border: 1px solid #000000;"
+                    " border-image: url(:/resources/images/button.jpg);"
+                    " padding: 7.5px 15px;"
+                    " border-radius: 10px;"
+                    " color: #000000;"
+                    " font-size: 18px;"
+                "}"
+                "QPushButton:pressed "
+                "{"
+                    " border-image: url(:/resources/images/button_background.jpg);"
+                    " border-color #00ffff;"
+                "}"
+                "QPushButton:flat "
+                "{"
+                    " border: none;"
+                "}";
+
 
 };
 

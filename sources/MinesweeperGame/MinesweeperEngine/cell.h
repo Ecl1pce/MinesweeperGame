@@ -1,6 +1,5 @@
 #ifndef CELL_H
 #define CELL_H
-
 /**
  * @brief The Cell class
  *
@@ -10,8 +9,6 @@
 class Cell
 {
 public:
-    Cell();
-
     /**
      * @brief Cell Конструктор класса
      * @param coordX Первая координата клетки поля

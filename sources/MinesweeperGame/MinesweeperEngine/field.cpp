@@ -3,8 +3,8 @@
 Field::Field()
 {
     fieldSizeX = 16;
-    fieldSizeY = 32;
-    minesNumber = 40;
+    fieldSizeY = 16;
+    minesNumber = 15;
     gameActive = 1;
     loseFlag = 0;
 
@@ -113,7 +113,7 @@ int Field::getMinesNumber() const
 {
     return minesNumber;
 }
-void Field::openCellsAround(int x, int y)
+void Field::open(int x, int y)
 {
     if (checkValidCoord(x, y))
     {
@@ -125,21 +125,21 @@ void Field::openCellsAround(int x, int y)
         if (checkValidCoord(x - 1, y - 1))
         {
             if (consField[x-1][y-1].getValue() == 0 && consField[x-1][y-1].isOpen() == 0)
-                openCellsAround(x - 1, y - 1);
+                open(x - 1, y - 1);
             else
                 consField[x-1][y-1].openCell();
         }
         if (checkValidCoord(x - 1, y))
         {
             if (consField[x-1][y].getValue() == 0 && consField[x-1][y].isOpen() == 0)
-                openCellsAround(x - 1, y);
+                open(x - 1, y);
             else  consField[x-1][y].openCell();
         }
 
         if (checkValidCoord(x - 1, y + 1))
         {
             if (consField[x-1][y+1].getValue() == 0 && consField[x-1][y+1].isOpen() == 0)
-                openCellsAround(x - 1, y + 1);
+                open(x - 1, y + 1);
             else
                 consField[x-1][y+1].openCell();
         }
@@ -147,35 +147,35 @@ void Field::openCellsAround(int x, int y)
         if (checkValidCoord(x, y - 1))
         {
             if (consField[x][y-1].getValue() == 0 && consField[x][y-1].isOpen() == 0)
-                openCellsAround(x, y - 1);
+                open(x, y - 1);
             else   consField[x][y-1].openCell();
         }
 
         if (checkValidCoord(x, y + 1))
         {
             if (consField[x][y+1].getValue() == 0 && consField[x][y+1].isOpen() == 0)
-                openCellsAround(x, y + 1);
+                open(x, y + 1);
             else   consField[x][y+1].openCell();
         }
 
         if (checkValidCoord(x + 1, y - 1))
         {
             if (consField[x+1][y-1].getValue() == 0 && consField[x+1][y-1].isOpen() == 0)
-                openCellsAround(x + 1, y - 1);
+                open(x + 1, y - 1);
             else   consField[x+1][y-1].openCell();
         }
 
         if (checkValidCoord(x + 1, y))
         {
             if (consField[x+1][y].getValue() == 0 && consField[x+1][y].isOpen() == 0)
-                openCellsAround(x + 1, y);
+                open(x + 1, y);
             else   consField[x+1][y].openCell();
         }
 
         if (checkValidCoord(x + 1, y + 1))
         {
             if (consField[x+1][y+1].getValue() == 0 && consField[x+1][y+1].isOpen() == 0)
-                openCellsAround(x + 1, y + 1);
+                open(x + 1, y + 1);
             else   consField[x+1][y+1].openCell();
         }
     }
@@ -189,11 +189,16 @@ bool Field::isGameActive()
 {
     return gameActive;
 }
-Cell Field::getPieceOfField(int x, int y) const
+Cell Field::getPieceOfField(int x, int y)
 {
     return consField[x][y];
 }
 void Field::setFlag(int x, int y)
 {
     consField[x][y].swapFlag();
+}
+Cell* Field::getCell(int x, int y)
+{
+   Cell *cell = &consField[x][y];
+   return cell;
 }

@@ -3,6 +3,7 @@
 
 /**
   @brief Заголовочный файл с реализацией макроса SWITCH - CASE для std::string
+  https://github.com/Efrit/str_switch/blob/master/str_switch.h
 **/
 
 

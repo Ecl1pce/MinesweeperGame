@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "optionswindow.h"
+#include "gamewindow.h"
 
 namespace Ui {
 class MainWindow;
@@ -27,12 +28,16 @@ signals:
 private:
     Ui::MainWindow *ui;
     OptionsWindow *optionsWnd;
+    GameWindow *gameWnd;
+
+
+    const QSize SCREEN_SIZE{850, 600};
 
     QString QPushButtonStyle =
                 "QPushButton "
                 "{"
                     " border: 1px solid #000000;"
-                    " border-image: url(:/images/button.jpg);"
+                    " border-image: url(:/resources/images/button.jpg);"
                     " padding: 7.5px 15px;"
                     " border-radius: 10px;"
                     " color: #000000;"
@@ -40,6 +45,7 @@ private:
                 "}"
                 "QPushButton:pressed "
                 "{"
+                    " border-image: url(:/resources/images/button_background.jpg);"
                     " border-color #00ffff;"
                 "}"
                 "QPushButton:flat "

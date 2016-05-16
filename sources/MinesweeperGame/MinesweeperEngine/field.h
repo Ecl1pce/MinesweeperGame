@@ -69,14 +69,14 @@ public:
      * @param y Вторая координата
      * @return Объект Cell - конкретную ячейку поля
      */
-    Cell getPieceOfField(int x, int y) const;
+    Cell getPieceOfField(int x, int y);
 
     /**
      * @brief openCellsAround Открывает ячейку и все пустые ячейки в радиусе 1 клетка
      * @param x Первая координата
      * @param y Вторая координата
      */
-    void openCellsAround(int x, int y);
+    void open(int x, int y);
 
     /**
      * @brief isLose Проверяет, проиграна ли игра
@@ -97,6 +97,8 @@ public:
      */
     void setFlag(int x, int y);
     bool gameActive;
+
+    Cell* getCell(int x, int y);
 
 protected:
     /**

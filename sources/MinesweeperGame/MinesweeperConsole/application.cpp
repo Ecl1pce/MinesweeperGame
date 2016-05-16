@@ -81,7 +81,7 @@ void Application::startGame()
 }
 void Application::open(int x, int y)
 {
-    appField->openCellsAround(x,y);
+    appField->open(x,y);
     checkLose();
     calculateMinesLeft();
 }

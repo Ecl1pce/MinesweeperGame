@@ -4,9 +4,10 @@
 #
 #-------------------------------------------------
 
-QT       -= gui
+QT       += core gui
 QMAKE_CXXFLAGS += -std=c++11
 TARGET = MinesweeperEngine
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TEMPLATE = lib
 
 DEFINES += MINESWEEPERENGINE_LIBRARY

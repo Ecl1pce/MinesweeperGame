@@ -1,9 +1,5 @@
 #include "cell.h"
 
-Cell::Cell()
-{
-
-}
 
 Cell::Cell(int coordX, int coordY)
 {

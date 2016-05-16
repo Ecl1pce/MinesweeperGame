@@ -28,7 +28,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Minesweeper Top Game</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -74,7 +74,6 @@
       </property>
       <property name="styleSheet">
        <string notr="true">font: 75 12pt &quot;KaiTi&quot;;
-border-image: url(:/images/button.jpg);
 background-color: rgb(150, 124, 99);
 
 
@@ -110,8 +109,8 @@ background-color: rgb(150, 124, 99);
       </property>
       <property name="styleSheet">
        <string notr="true">font: 75 12pt &quot;KaiTi&quot;;
-border-image: url(:/images/button.jpg);
-background-color: rgb(150, 124, 99);</string>
+background-color: rgb(150, 124, 99);
+</string>
       </property>
       <property name="text">
        <string>Options</string>
@@ -143,7 +142,6 @@ background-color: rgb(150, 124, 99);</string>
       </property>
       <property name="styleSheet">
        <string notr="true">font: 75 12pt &quot;KaiTi&quot;;
-border-image: url(:/images/button.jpg);
 background-color: rgb(150, 124, 99);
 </string>
       </property>
@@ -154,8 +152,6 @@ background-color: rgb(150, 124, 99);
     </item>
    </layout>
   </widget>
-  <zorder>layoutWidget</zorder>
-  <zorder>startGameButton</zorder>
  </widget>
  <resources/>
  <connections>
