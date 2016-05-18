@@ -43,14 +43,18 @@ private:
                     " color: #000000;"
                     " font-size: 22px;"
                 "}"
+                "QPushButton:flat "
+                "{"
+                    " border: none;"
+                "}"
+                "QPushButton:hover "
+                "{"
+                    " border-image: url(:/resources/images/button_hover);"
+                "}"
                 "QPushButton:pressed "
                 "{"
                     " border-image: url(:/resources/images/button_background.jpg);"
                     " border-color #00ffff;"
-                "}"
-                "QPushButton:flat "
-                "{"
-                    " border: none;"
                 "}";
 
 

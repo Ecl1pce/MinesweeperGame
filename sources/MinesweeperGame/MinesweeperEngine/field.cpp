@@ -2,11 +2,15 @@
 
 Field::Field()
 {
-    fieldSizeX = 16;
-    fieldSizeY = 16;
-    minesNumber = 15;
+    fieldSizeX = 24;
+    fieldSizeY = 24;
+    minesNumber = 16;
     gameActive = 1;
     loseFlag = 0;
+
+    minesLeft = minesNumber;
+    flagsLeft = minesNumber;
+    cellsLeft = fieldSizeX * fieldSizeY;
 
         vector <Cell> tmpVect;
         for (int i = 0; i < fieldSizeX; i++)
@@ -180,6 +184,9 @@ void Field::open(int x, int y)
         }
     }
 }
+    calculateMinesLeft();
+    calculateCellsLeft();
+    calculateFlagsLeft();
 }
 bool Field::isLose()
 {
@@ -196,9 +203,39 @@ Cell Field::getPieceOfField(int x, int y)
 void Field::setFlag(int x, int y)
 {
     consField[x][y].swapFlag();
+    calculateMinesLeft();
+    calculateCellsLeft();
+    calculateFlagsLeft();
 }
 Cell* Field::getCell(int x, int y)
 {
    Cell *cell = &consField[x][y];
    return cell;
+}
+void Field::calculateCellsLeft()
+{
+    int closedCells = 0;
+    for (int i = 0; i < fieldSizeX; i++)
+        for (int j = 0; j < fieldSizeY; j++)
+            if (consField[i][j].isOpen() == 0)
+                closedCells++;
+    cellsLeft = closedCells;
+}
+void Field::calculateFlagsLeft()
+{
+    int flagsSetted = 0;
+    for (int i = 0; i < fieldSizeX; i++)
+        for (int j = 0; j < fieldSizeY; j++)
+            if (consField[i][j].isFlag())
+                flagsSetted++;
+    flagsLeft = minesLeft - flagsSetted;
+}
+void Field::calculateMinesLeft()
+{
+    int minesDetected = 0;
+    for (int i = 0; i < fieldSizeX; i++)
+        for (int j = 0; j < fieldSizeY; j++)
+            if (consField[i][j].isMine() && consField[i][j].isFlag())
+                minesDetected++;
+    minesLeft = minesNumber - minesDetected;
 }

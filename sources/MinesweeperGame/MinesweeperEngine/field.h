@@ -100,6 +100,10 @@ public:
 
     Cell* getCell(int x, int y);
 
+    int minesLeft;
+    int cellsLeft;
+    int flagsLeft;
+
 protected:
     /**
      * @brief setValuesInCells Устанавливает значение в клетке по заданным координатам равное количеству мин вокруг в радиусе 1 клетка
@@ -138,6 +142,12 @@ protected:
      * @brief loseFlag Флаг, отвечающий за поражение в игре
      */
     bool loseFlag;
+
+
+    void calculateMinesLeft();
+    void calculateCellsLeft();
+    void calculateFlagsLeft();
+
 
 };
 

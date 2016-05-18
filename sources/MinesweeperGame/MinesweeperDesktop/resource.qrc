@@ -13,5 +13,8 @@
         <file>images/green_button64.png</file>
         <file>images/field_button2.png</file>
         <file>images/field_button2_pressed.png</file>
+        <file>images/button_hover.jpg</file>
+        <file>images/mine.png</file>
+        <file>images/mine_button.png</file>
     </qresource>
 </RCC>

@@ -34,9 +34,17 @@ private:
     Field *core;
     QPushButton *backButton;
     QGridLayout *fieldLayout;
-    QVBoxLayout *mainLayout;
+    QVBoxLayout *mainFieldLayout;
+    QVBoxLayout *panelLayout;
+    QHBoxLayout *mainLayout;
     int i,j;
     QSize *fieldButtonSize;
+    QLabel *fieldHeightNumber;
+    QLabel *fieldLengthNumber;
+    QLabel *allCellsNumber;
+    QLabel *cellsLeftNumber;
+    QLabel *minesLeftNumber;
+    QLabel *flagsLeftNumber;
 
 
     QString QPushButtonStyle =
@@ -49,14 +57,18 @@ private:
                     " color: #000000;"
                     " font-size: 22px;"
                 "}"
+                "QPushButton:flat "
+                "{"
+                    " border: none;"
+                "}"
+                "QPushButton:hover "
+                "{"
+                    " border-image: url(:/resources/images/button_hover);"
+                "}"
                 "QPushButton:pressed "
                 "{"
                     " border-image: url(:/resources/images/button_background.jpg);"
                     " border-color #00ffff;"
-                "}"
-                "QPushButton:flat "
-                "{"
-                    " border: none;"
                 "}";
 
     QString QFieldButtonStyle =
@@ -64,7 +76,6 @@ private:
             "{"
                 " border-image: url(:/resources/images/field_button2.png);"
             "}"
-
             "QPushButton:hover "
             "{"
                 " border-image: url(:/resources/images/field_button2_pressed.png);"
@@ -84,6 +95,12 @@ private:
             "QPushButton "
             "{"
                 " border-image: url(:/resources/images/field_button3.png);"
+                " font-size: 20px;"
+            "}";
+    QString QLabelStyle =
+            "QLabel "
+            "{"
+                " color: #ffffff;"
                 " font-size: 20px;"
             "}";
 
