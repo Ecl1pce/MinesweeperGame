@@ -16,7 +16,7 @@ GameWindow::GameWindow(QWidget *parent) :
     core = new Field;
     fieldLayout = new QGridLayout;
 
-    backButton = new QPushButton("Выход");
+    backButton = new QPushButton("Back to menu");
     backButton->setStyleSheet(QPushButtonStyle);
     backButton->setFixedSize(175,50);
     connect(backButton, SIGNAL(clicked(bool)), this, SLOT(backToMenu()));
@@ -25,12 +25,12 @@ GameWindow::GameWindow(QWidget *parent) :
     panelLayout = new QVBoxLayout;
     mainLayout = new QHBoxLayout;
 
-    vector<QPushButton*> tmpVect;
+    vector<QMyPushButton*> tmpVect;
     for (int i = 0; i < core->getSizeX(); i++)
     {
         for (int j = 0; j < core->getSizeY(); j++)
         {
-            QPushButton* newButton;
+            QMyPushButton* newButton;
             tmpVect.push_back(newButton);
         }
         buttons.push_back(tmpVect);
@@ -102,15 +102,17 @@ GameWindow::GameWindow(QWidget *parent) :
     for (int i = 0; i < core->getSizeX(); i++)
         for (int j = 0; j < core->getSizeY(); j++)
         {
-            buttons[i][j] = new QPushButton;
+            buttons[i][j] = new QMyPushButton;
             fieldButtonSize = new QSize(32,32);
             buttons[i][j]->setStyleSheet(QFieldButtonStyle);
             buttons[i][j]->setFixedSize(*fieldButtonSize);
             //buttons[i][j]->setText("Do it!");
             fieldLayout->addWidget(buttons[i][j], i, j, 1, 1);
             buttons[i][j]->setProperty("coordinates", i * 1000 + j);
-            connect(buttons[i][j], SIGNAL(clicked(bool)), this, SLOT(clickedLeft()));
-            //connect(buttons[i][j], SIGNAL(pressed()), this, SLOT(longClick()));
+            connect(buttons[i][j], SIGNAL(pressed()), this, SLOT(clickedLeft()));
+            connect(buttons[i][j], SIGNAL(rClicked()), this, SLOT(setFlag()));
+            //QMyPushButton *but = new QMyPushButton;
+            //connect(but, SIGNAL())
 
         }
     mainFieldLayout->addLayout(fieldLayout);
@@ -135,13 +137,16 @@ GameWindow::GameWindow(QWidget *parent) :
 
     void GameWindow::clickedLeft()
     {
-    QPushButton *button = qobject_cast<QPushButton*>(sender());
+    QMyPushButton *button = qobject_cast<QMyPushButton*>(sender());
     QVariant index = button->property("coordinates");
     int coordinates = index.toInt();
     int x = coordinates / 1000;
     int y = coordinates - x * 1000;
-    core->open(x,y);
-    repaint();
+    if (core->getPieceOfField(x,y).isFlag() == 0)
+    {
+        core->open(x,y);
+        repaint();
+    }
 
 
 }
@@ -187,13 +192,18 @@ void GameWindow::backToMenu()
     this->close();
 }
 
-void GameWindow::longClick()
+void GameWindow::setFlag()
 {
-    QPushButton *button = qobject_cast<QPushButton*>(sender());
+    QMyPushButton *button = qobject_cast<QMyPushButton*>(sender());
     QVariant index = button->property("coordinates");
     int coordinates = index.toInt();
     int x = coordinates / 1000;
     int y = coordinates - x * 1000;
-    core->setFlag(x,y);
+    if (core->getPieceOfField(x,y).isOpen() == 0 || core->getPieceOfField(x,y).isFlag())
+        core->setFlag(x,y);
+    if (core->getPieceOfField(x,y).isFlag())
+        button->setStyleSheet(FlagButtonStyle);
+    if (core->getPieceOfField(x,y).isFlag() == 0)
+        button->setStyleSheet(QFieldButtonStyle);
     repaint();
 }

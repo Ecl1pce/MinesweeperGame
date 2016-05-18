@@ -2,8 +2,8 @@
 
 Field::Field()
 {
-    fieldSizeX = 24;
-    fieldSizeY = 24;
+    fieldSizeX = 16;
+    fieldSizeY = 16;
     minesNumber = 16;
     gameActive = 1;
     loseFlag = 0;
@@ -202,10 +202,13 @@ Cell Field::getPieceOfField(int x, int y)
 }
 void Field::setFlag(int x, int y)
 {
+    if (flagsLeft > 0 || consField[x][y].isFlag())
+    {
     consField[x][y].swapFlag();
     calculateMinesLeft();
     calculateCellsLeft();
     calculateFlagsLeft();
+    }
 }
 Cell* Field::getCell(int x, int y)
 {
@@ -228,7 +231,7 @@ void Field::calculateFlagsLeft()
         for (int j = 0; j < fieldSizeY; j++)
             if (consField[i][j].isFlag())
                 flagsSetted++;
-    flagsLeft = minesLeft - flagsSetted;
+    flagsLeft = minesNumber - flagsSetted;
 }
 void Field::calculateMinesLeft()
 {

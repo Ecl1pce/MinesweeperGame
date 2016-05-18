@@ -27,7 +27,7 @@ void Cell::setMine() { mine = 1; }
 
 void Cell::swapFlag() { flag = !flag; }
 
-void Cell::openCell() { open = 1; }
+void Cell::openCell() { open = 1; flag = 0; }
 
 bool Cell::isOpen() { return open; }
 

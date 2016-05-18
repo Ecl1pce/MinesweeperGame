@@ -2,6 +2,7 @@
 #define GAMEWINDOW_H
 #include "ui_gamewindow.h"
 #include "field.h"
+#include "qmypushbutton.h"
 #include <QGridLayout>
 #include <QPushButton>
 #include <QDialog>
@@ -13,6 +14,7 @@
 #include <QLabel>
 #include <QIcon>
 #include <QSize>
+#include <QMouseEvent>
 
 namespace Ui {
 class GameWindow;
@@ -28,8 +30,9 @@ public:
     void repaint();
 
 
+
 private:
-    vector<vector<QPushButton*> > buttons;
+    vector<vector<QMyPushButton*> > buttons;
     Ui::GameWindow *ui;
     Field *core;
     QPushButton *backButton;
@@ -107,7 +110,9 @@ private:
 private slots:
     void clickedLeft();
     void backToMenu();
-    void longClick();
+    void setFlag();
 };
+
+
 
 #endif // GAMEWINDOW_H

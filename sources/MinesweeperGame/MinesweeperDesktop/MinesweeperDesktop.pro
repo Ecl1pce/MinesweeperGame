@@ -21,7 +21,8 @@ SOURCES += main.cpp \
 HEADERS  += \
     mainwindow.h \
     optionswindow.h \
-    gamewindow.h
+    gamewindow.h \
+    qmypushbutton.h
 
 FORMS    += \
     mainwindow.ui \
